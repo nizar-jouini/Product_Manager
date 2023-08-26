@@ -14,6 +14,17 @@ const DisplayAllProducts = (props) => {
             .catch(err => console.log(err))
     }, [setProducts])
 
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/products/' + productId) // remove product from MongoDB
+            .then(res => removeFromDom(productId))
+            .catch(err => console.log(err))
+    }
+
+    // remove product from list in the frontend
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id !== productId))
+      }
+
     return (
     <div className="container w-75">
         <h1 className='text-center'>List of Products</h1>
@@ -34,8 +45,9 @@ const DisplayAllProducts = (props) => {
                             <td>{ product.price }</td>
                             <td>{ product.description }</td>
                             <td>
-                                <Link to={`/products/${ product._id }`} className='me-3'>Show</Link>
-                                <Link to={`/products/edit/${ product._id }`}>Edit</Link>
+                                <Link to={`/products/${ product._id }`}>Show</Link>
+                                <Link to={`/products/edit/${ product._id }`} className='mx-3'>Edit</Link>
+                                <Link onClick={ (e) => {deleteProduct(product._id)} }>Delete</Link>
                             </td>
                         </tr>
                     ))
