@@ -1,10 +1,13 @@
 import './App.css';
-import FormCreateProduct from './components/FormCreateProduct';
+import Main from './views/Main';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <FormCreateProduct />
+      <Routes>
+        <Route element={<Main />} path='/products' default />
+      </Routes>
     </div>
   );
 }

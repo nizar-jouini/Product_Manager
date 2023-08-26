@@ -32,16 +32,16 @@ const FormCreateProduct = () => {
                     {/* When the user types in this input, our onChange synthetic event 
                         runs this arrow function, setting that event's target's (input) 
                         value (what's typed into the input) to our updated state   */}
-                    <span className="input-group-text w-25" id="inputGroup-sizing-default">Title:</span>
-                    <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onChange={ (e) => setTitle(e.target.value) }/>
+                    <span className="input-group-text w-25">Title:</span>
+                    <input type="text" className="form-control" onChange={ (e) => setTitle(e.target.value) }/>
                 </div>
                 <div className="input-group mb-3">
-                    <span className="input-group-text w-25" id="inputGroup-sizing-default">Price:</span>
-                    <input className="text form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onChange={ (e) => setPrice(e.target.value) }/>
+                    <span className="input-group-text w-25">Price:</span>
+                    <input className="text form-control" onChange={ (e) => setPrice(e.target.value) }/>
                 </div>
                 <div className="input-group mb-3">
-                    <span className="input-group-text w-25" id="inputGroup-sizing-default">Description:</span>
-                    <textarea className="text form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onChange={ (e) => setDecription(e.target.value) }/>
+                    <span className="input-group-text w-25">Description:</span>
+                    <textarea className="text form-control" onChange={ (e) => setDecription(e.target.value) }/>
                 </div>
                 <div className="d-flex justify-content-center align-items-center">
                     <input className="btn btn-primary mb-3" type="submit" value="Create" />
