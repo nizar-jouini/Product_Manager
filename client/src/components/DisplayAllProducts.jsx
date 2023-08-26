@@ -33,7 +33,10 @@ const DisplayAllProducts = (props) => {
                             <td>{ product.title }</td>
                             <td>{ product.price }</td>
                             <td>{ product.description }</td>
-                            <td><Link to={`/products/${ product._id }`}>{ product.title }'s Page!</Link></td>
+                            <td>
+                                <Link to={`/products/${ product._id }`} className='me-3'>Show</Link>
+                                <Link to={`/products/edit/${ product._id }`}>Edit</Link>
+                            </td>
                         </tr>
                     ))
                 }
