@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import DeleteButton from './DeleteButton'
 
 const DisplayAllProducts = (props) => {
-    const { products, setProducts } = props
+    const {products, setProducts} = props
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/products')
-            .then(res => {
-                console.log(res.data)
-                setProducts(res.data)
-            })
-            .catch(err => console.log(err))
+      axios.get('http://localhost:8000/api/products')
+          .then(res => {
+              console.log(res.data)
+              setProducts(res.data)
+          })
+          .catch(err => console.log(err))
     }, [setProducts])
+
+    const removeFromDom = productId => {
+        setProducts(products.filter(product=> product._id !== productId))
+  }
 
     return (
     <div className="container w-75">
@@ -33,9 +38,10 @@ const DisplayAllProducts = (props) => {
                             <td>{ product.title }</td>
                             <td>{ product.price }</td>
                             <td>{ product.description }</td>
-                            <td>
-                                <Link to={`/products/${ product._id }`} className='me-3'>Show</Link>
-                                <Link to={`/products/edit/${ product._id }`}>Edit</Link>
+                            <td className='d-flex justify-content-center align-items-center'>
+                                <Link to={`/products/${ product._id }`}>Show</Link>
+                                <Link to={`/products/edit/${ product._id }`}  className='mx-3'>Edit</Link>
+                                <DeleteButton productId={product._id} successCallback={ () => removeFromDom(product._id) } />
                             </td>
                         </tr>
                     ))

@@ -7,6 +7,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 function App() {
   return (
     <div>
+      <h1 className='mb-3 text-center'>Product Manager</h1>
       <Routes>
         <Route path="/" element={<Navigate to="/products" />} />  {/* redirect the path "/" to "/products" */}
         <Route element={<Main />} path='/products' default />  {/* adding the default makes this the default path */}
