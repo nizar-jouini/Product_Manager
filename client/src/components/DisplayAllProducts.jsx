@@ -40,7 +40,7 @@ const DisplayAllProducts = (props) => {
                             <td>{ product.description }</td>
                             <td className='d-flex justify-content-center align-items-center'>
                                 <Link to={`/products/${ product._id }`}>Show</Link>
-                                <Link to={`/products/edit/${ product._id }`}  className='mx-3'>Edit</Link>
+                                <Link to={`/products/edit/${ product._id }`} className='mx-3'>Edit</Link>
                                 <DeleteButton productId={product._id} successCallback={ () => removeFromDom(product._id) } />
                             </td>
                         </tr>
